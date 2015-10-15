@@ -1,0 +1,104 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://myapitrial.appspot.com/_ah/api",
+  "name" : "detail",
+  "version" : "v1",
+  "description" : "An API to manage famous quotes",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "https://myapitrial.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "methods" : {
+    "detail.add" : {
+      "path" : "add/{email}/{pass}",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.osahub.entity.Apibuild.add",
+      "request" : {
+        "parameters" : {
+          "email" : {
+            "type" : "string",
+            "required" : true
+          },
+          "pass" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    },
+    "detail.show" : {
+      "path" : "show/{email}/{pass}",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.osahub.entity.Apibuild.show",
+      "request" : {
+        "parameters" : {
+          "email" : {
+            "type" : "string",
+            "required" : true
+          },
+          "pass" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "Details" : {
+        "id" : "Details",
+        "type" : "object",
+        "properties" : {
+          "emial" : {
+            "type" : "string"
+          },
+          "pass" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "methods" : {
+      "com.osahub.entity.Apibuild.add" : {
+      },
+      "com.osahub.entity.Apibuild.show" : {
+        "response" : {
+          "$ref" : "Details"
+        }
+      }
+    }
+  }
+}
